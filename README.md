@@ -7,4 +7,4 @@ This app calls 2 APIs:
 Both APIs have a free plan, but they require a API Key to be registered and the keys to be populated in the sorce code of the app (STOCK_API_KEY and NEWS_API_KEY variables).
 
 Run main.py to start the app. By default, it provide information about Nvidia's stock market prices and news (change COMPANY_NAME and STOCK_SYMBOL to your preferred company).
-This app can be improved by using a cloud service to run it every day and to send a SMS/WhatsApp message (using Twilio API - https://www.twilio.com/en-us), instead of printing it in the console.
+This app can be improved by using a cloud service to run it every day and to send a SMS/WhatsApp message (using Twilio API - https://www.twilio.com/en-us)/email, instead of printing it in the console.
