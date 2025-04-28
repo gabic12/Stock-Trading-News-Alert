@@ -62,6 +62,10 @@ def get_news_data():
 percent = get_stock_data()
 articles = get_news_data()
 
-print(f"{STOCK_SYMBOL}: {percent}% \n")
+if percent >= 0:
+    print(f"{STOCK_SYMBOL}: +{percent}% \n")
+else:
+    print(f"{STOCK_SYMBOL}: {percent}% \n")
+    
 for article in articles:
     print(article + "\n")
