@@ -3,8 +3,8 @@ import datetime as dt
 
 STOCK_SYMBOL = "NVDA" #Change stock name here
 COMPANY_NAME = "Nvidia" #Change company name here
-STOCK_API_KEY = "G8HKAOC5TPHU5V3L"
-NEWS_API_KEY = "86e466c2979b4c069e888f71a9be5124"
+STOCK_API_KEY = "Your Stock Price API Key"
+NEWS_API_KEY = "Your News API Key"
 
 #Date variables
 today_date = dt.datetime.now().date()
