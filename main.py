@@ -3,16 +3,28 @@ import datetime as dt
 
 STOCK_SYMBOL = "NVDA" #Change stock name here
 COMPANY_NAME = "Nvidia" #Change company name here
-STOCK_API_KEY = "Your Stock Price API Key"
-NEWS_API_KEY = "Your News API Key"
+STOCK_API_KEY = "G8HKAOC5TPHU5V3L"
+NEWS_API_KEY = "86e466c2979b4c069e888f71a9be5124"
 
 #Date variables
-today_date = str(dt.datetime.now().date())
-yesterday_date = str((dt.datetime.now() - dt.timedelta(1)).date())
-two_days_ago_date = str((dt.datetime.now() - dt.timedelta(2)).date())
+today_date = dt.datetime.now().date()
+
+#Stock market is closed on weekends, retrieve data from the last two trading days
+if today_date.weekday() == 6: #Check if today is Sunday
+    yesterday_date = str((dt.datetime.now() - dt.timedelta(2)).date()) #Friday
+    two_days_ago_date = str((dt.datetime.now() - dt.timedelta(3)).date())  #Thursday
+elif today_date.weekday() == 0: #Check if today is Monday
+    yesterday_date = str((dt.datetime.now() - dt.timedelta(3)).date()) #Friday
+    two_days_ago_date = str((dt.datetime.now() - dt.timedelta(4)).date()) #Thursday
+elif today_date.weekday() == 1: #Check if today is Tuesday
+    yesterday_date = str((dt.datetime.now() - dt.timedelta(1)).date()) #Monday
+    two_days_ago_date = str((dt.datetime.now() - dt.timedelta(4)).date()) #Friday
+else:
+    yesterday_date = str((dt.datetime.now() - dt.timedelta(1)).date())
+    two_days_ago_date = str((dt.datetime.now() - dt.timedelta(2)).date())
 
 def get_stock_data():
-    """Calls the Stock Price API and returns the percent difference between yesterday's closing price and the day before yesterday's closing price"""
+    """Calls the Stock Price API and returns the percent difference between last two trading days closing price"""
     stock_api_parameters = {
         "function": "TIME_SERIES_DAILY",
         "symbol": STOCK_SYMBOL,
@@ -35,7 +47,7 @@ def get_news_data():
     news_api_parameters = {
         "qInTitle": COMPANY_NAME,
         "from": yesterday_date,
-        "to": today_date,
+        "to": str(today_date),
         "sortBy": "popularity",
         "language": "en",
         "apiKey": NEWS_API_KEY
