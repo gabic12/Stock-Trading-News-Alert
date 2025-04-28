@@ -62,7 +62,7 @@ def get_news_data():
 percent = get_stock_data()
 articles = get_news_data()
 
-if percent >= 0:
+if percent > 0:
     print(f"{STOCK_SYMBOL}: +{percent}% \n")
 else:
     print(f"{STOCK_SYMBOL}: {percent}% \n")
